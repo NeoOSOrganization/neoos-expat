@@ -1,7 +1,14 @@
+# The hosted NeoOS cross toolchain (neoos-hosted-gcc): $NEOOS_TOOLCHAIN,
+# or its usual install location.
+if(DEFINED ENV{NEOOS_TOOLCHAIN})
+  set(NEOOS_TOOLCHAIN $ENV{NEOOS_TOOLCHAIN})
+else()
+  set(NEOOS_TOOLCHAIN $ENV{HOME}/opt/cross-x86_64-neoos)
+endif()
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR x86_64)
-set(CMAKE_C_COMPILER /home/neo/opt/cross-x86_64-neoos/bin/x86_64-neoos-linux-musl-gcc)
-set(CMAKE_FIND_ROOT_PATH /home/neo/opt/cross-x86_64-neoos/x86_64-neoos-linux-musl)
+set(CMAKE_C_COMPILER ${NEOOS_TOOLCHAIN}/bin/x86_64-neoos-linux-musl-gcc)
+set(CMAKE_FIND_ROOT_PATH ${NEOOS_TOOLCHAIN}/x86_64-neoos-linux-musl)
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
